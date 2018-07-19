@@ -1,4 +1,4 @@
 class Service < ApplicationRecord
-  belongs_to :merchant
-  belongs_to :client
+  belongs_to :merchant, optional: true
+  belongs_to :client, optional: true
 end
