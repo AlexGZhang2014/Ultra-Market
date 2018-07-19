@@ -27,3 +27,8 @@ form_for automatically generates "fields_with_errors" -> validations with form_f
 So the general workflow will be that a user_account will be able to sign up, log in, log out, and .build_merchant and/or .build_client. UserAccount controller will have index, new, create, edit, update, destroy actions.
 
 Items controller and Services controller will have all standard CRUD actions. Merchant and Client controllers will only have new and create actions.
+
+Class methods
+Items and services should both have #most_recent and #oldest for sorting by date.
+Items should have an #available class method that checks for items such that item.quantity > 0
+Services should have an #available class method that checks for services such that service.completed = false
