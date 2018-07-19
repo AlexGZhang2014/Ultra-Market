@@ -14,5 +14,8 @@ Service has name and description
 Merchant class vs Client class - log in as either?
 
 One account class that belongs to Merchant or belongs to Client - different functionality for each, but with different ids? - Let's try this one!
+Have checkboxes upon creating an account. Have validations for each one.
 
 Account has one merchant and/or has one client
+
+form_for automatically generates "fields_with_errors" -> validations with form_for lesson
