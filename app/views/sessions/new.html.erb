@@ -1,10 +1,14 @@
 <h1>Log into your account!</h1>
-<%= form_for @user_account do |u| %>
-  <%= u.label :username %>
-  <%= u.text_field :username %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<br>
+<%= form_tag("/login") do %>
+  <%= label_tag :username %>
+  <%= text_field_tag :username %>
   <br>
-  <%= u.label :password %>
-  <%= u.password_field :password %>
+  <%= label_tag :password, "Password:" %>
+  <%= password_field_tag :password %>
   <br>
-  <%= u.submit "Log In" %>
+  <%= submit_tag "Log In" %>
 <% end %>
