@@ -1,4 +1,6 @@
 class UserAccountsController < ApplicationController
+  before_action :set_user, only: [:show]
+
   def new
     @user_account = UserAccount.new
   end
@@ -12,9 +14,16 @@ class UserAccountsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
     def user_params
       params.require(:user_account).permit(:username, :email, :password)
+    end
+
+    def set_user
+      @user_account = UserAccount.find(params[:id])
     end
 end
