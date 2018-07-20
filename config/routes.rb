@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   root "static#home"
   resources :user_accounts
   resources :merchants do
-    resources :items, only: [:index, :new, :create, :show]
-    resources :services, only: [:index, :new, :create, :show]
+    resources :items, only: [:index, :new, :edit, :show]
+    resources :services, only: [:index, :new, :edit, :show]
   end
   resources :clients do
-    resources :items, only: [:index, :new, :create, :show]
-    resources :services, only: [:index, :new, :create, :show]
+    resources :items, only: [:index, :new, :edit, :show]
+    resources :services, only: [:index, :new, :edit, :show]
   end
   resources :items
   resources :services
