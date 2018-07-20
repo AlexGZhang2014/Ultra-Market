@@ -4,4 +4,5 @@ class Merchant < ApplicationRecord
   has_many :services
   has_many :clients, through: :items
   has_many :clients, through: :services
+  validates :name, presence: true
 end
