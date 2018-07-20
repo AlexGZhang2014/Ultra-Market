@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def new
     @user_account = UserAccount.new
-    @user_accounts = UserAccount.all
   end
 
   def create
