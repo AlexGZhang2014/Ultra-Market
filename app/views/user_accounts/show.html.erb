@@ -1,0 +1,8 @@
+<h1>Profile page for <%= @user_account.username %></h1>
+<% if @user_account.merchant.nil? %>
+  <p>If you want to sell something, <%= link_to "click here", new_merchant_path %></p>
+<% end %>
+
+<% if @user_account.client.nil? %>
+  <p>If you want to buy something, <%= link_to "click here", new_client_path %></p>
+<% end %>
