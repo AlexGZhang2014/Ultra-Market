@@ -8,6 +8,7 @@ class UserAccountsController < ApplicationController
   def create
     @user_account = UserAccount.new(user_params)
     if @user_account.save
+      session[:user_account_id] = @user_account.id
       redirect_to user_account_path(@user_account)
     else
       render :new
