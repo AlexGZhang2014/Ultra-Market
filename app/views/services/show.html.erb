@@ -2,8 +2,8 @@
 <p><%= @service.description %></p>
 <p>Sold by <%= @service.merchant.name %></p>
 
-<% if current_user.client && current_user.username != @service.merchant.name %>
+<% if service_client_view %>
   <p><%= link_to "Click here", service_path(@service), method: "patch" %> to buy this service!</p>
-<% elsif current_user.merchant && current_user.username == @service.merchant.name %>
+<% elsif service_merchant_view %>
   <p><%= link_to "Click here", edit_merchant_service_path(@service) %> to edit this service.</p>
 <% end %>
