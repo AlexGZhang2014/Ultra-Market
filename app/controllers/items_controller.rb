@@ -54,6 +54,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item.destroy
+    flash[:notice] = "Item deleted."
+    redirect_to merchant_items_path(current_user.merchant)
+  end
+
   private
     def set_item
       @item = Item.find(params[:id])
