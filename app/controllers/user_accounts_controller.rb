@@ -16,6 +16,8 @@ class UserAccountsController < ApplicationController
   end
 
   def show
+    @merchant = current_user.merchant
+    
   end
 
   private
