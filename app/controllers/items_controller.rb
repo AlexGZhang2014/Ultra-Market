@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to item_path(@item)
+      redirect_to merchant_item_path(@item.merchant, @item)
     else
       render :new
     end
