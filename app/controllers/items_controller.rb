@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:merchant_id]
       @items = Merchant.find(params[:merchant_id]).items
@@ -17,10 +19,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def update
   end
 
   private
+    def set_item
+      @item = Item.find(params[:id])
+    end
 
     def item_params
       params.require(:item).permit(:name, :description, :merchant_id, :client_id)
