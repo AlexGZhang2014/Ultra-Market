@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :update, :destroy]
 
   def index
     if params[:merchant_id]
@@ -29,6 +29,20 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    if params[:merchant_id]
+      merchant = Merchant.find_by(id: params[:merchant_id])
+      if merchant.nil?
+        redirect_to merchants_path, alert: "Merchant not found."
+      else
+        @item = merchant.items.find_by(id: params[:id])
+        redirect_to merchant_items_path(merchant), alert: "Item not found." if @item.nil?
+      end
+    else
+      @item = Item.find(params[:id])
+    end
   end
 
   def update
