@@ -6,4 +6,5 @@
   <p><%= link_to "Click here", service_path(@service), method: "patch" %> to buy this service!</p>
 <% elsif service_merchant_view %>
   <p><%= link_to "Click here", edit_merchant_service_path(@service) %> to edit this service.</p>
+  <p><%= link_to "Click here", service_path(@service), method: "delete" %> to delete this service.</p>
 <% end %>
