@@ -1,10 +1,11 @@
-<h1><%= @item.name %></h1>
-<p><%= @item.description %></p>
-<p>Sold by <%= @item.merchant.name %></p>
+<h1>Name: <%= @item.name %></h1>
+<p>Description: <%= @item.description %></p>
+<p>Quantity: <%= @item.quantity %></p>
+<p>Sold by <%= link_to @item.merchant.name, user_account_path(@item.merchant.user_account) %></p>
 
 <% if item_client_view %>
   <p><%= link_to "Click here", item_path(@item), method: "patch" %> to buy this item!</p>
 <% elsif item_merchant_view %>
-  <p><%= link_to "Click here", edit_merchant_item_path(@item) %> to edit this item.</p>
+  <p><%= link_to "Click here", edit_merchant_item_path(@item.merchant, @item) %> to edit this item.</p>
   <p><%= link_to "Click here", item_path(@item), method: "delete" %> to delete this item.</p>
 <% end %>
