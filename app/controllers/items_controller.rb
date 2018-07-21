@@ -46,6 +46,12 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @item.update(item_params)
+    if @item.save
+      redirect_to merchant_item_path(@item.merchant, @item)
+    else
+      render :edit
+    end
   end
 
   private
