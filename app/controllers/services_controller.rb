@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :update, :destroy]
 
   def index
     if params[:merchant_id]
@@ -29,6 +29,20 @@ class ServicesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    if params[:merchant_id]
+      merchant = Merchant.find_by(id: params[:merchant_id])
+      if merchant.nil?
+        redirect_to merchants_path, alert: "Merchant not found."
+      else
+        @service = merchant.services.find_by(id: params[:id])
+        redirect_to merchant_services_path(merchant), alert: "Service not found." if @service.nil?
+      end
+    else
+      @service = Service.find(params[:id])
+    end
   end
 
   def update
