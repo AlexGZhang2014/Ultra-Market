@@ -2,8 +2,8 @@
 <% if @user_account.merchant.nil? %>
   <p>If you want to sell something, <%= link_to "click here", merchants_path, method: "post" %></p>
 <% else %>
-  <p><%= link_to "Click here", new_merchant_item_path %> to add a new item for sale!</p>
-  <p><%= link_to "Click here", new_merchant_service_path %> to add a new service for sale!</p>
+  <p><%= link_to "Click here", new_merchant_item_path(@merchant) %> to add a new item for sale!</p>
+  <p><%= link_to "Click here", new_merchant_service_path(@merchant) %> to add a new service for sale!</p>
   <p><%= link_to "Click here", merchant_items_path(@user_account.merchant) %> to see all the items you've put up for sale!</p>
   <p><%= link_to "Click here", merchant_services_path(@user_account.merchant) %> to see all the services you've put up for sale!</p>
 <% end %>
