@@ -1,0 +1,9 @@
+<h1><%= @item.name %></h1>
+<p><%= @item.description %></p>
+<p>Sold by <%= @item.merchant.name %></p>
+
+<% if current_user.client && current_user.username != @item.merchant.name %>
+  <p><%= link_to "Click here", item_path(@item), method: "patch" %> to buy this item!</p>
+<% elsif current_user.merchant && current_user.username == @item.merchant.name %>
+  <p><%= link_to "Click here", edit_merchant_item_path(@item) %> to edit this item.</p>
+<% end %>
