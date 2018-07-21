@@ -46,6 +46,12 @@ class ServicesController < ApplicationController
   end
 
   def update
+    @service.update(service_params)
+    if @service.save
+      redirect_to merchant_service_path(@service.merchant, @service)
+    else
+      render :edit
+    end
   end
 
   private
