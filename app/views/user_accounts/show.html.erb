@@ -11,6 +11,6 @@
 <% if @user_account.client.nil? %>
   <p>If you want to buy something, <%= link_to "click here", clients_path, method: "post" %></p>
 <% else %>
-  <p><%= link_to "Click here", client_items_path %>to see all the items you've bought!</p>
-  <p><%= link_to "Click here", client_services_path %>to see all the services you've bought!</p>
+  <p><%= link_to "Click here", client_items_path(@user_account.client) %>to see all the items you've bought!</p>
+  <p><%= link_to "Click here", client_services_path(@user_account.client) %>to see all the services you've bought!</p>
 <% end %>
