@@ -4,3 +4,5 @@
     <li><%= link_to item.name, merchant_item_path(item.merchant, item) %></li>
   <% end %>
 </ul>
+
+<p><%= link_to "Click here", user_account_path(current_user) %> to return to your account page.</p>
