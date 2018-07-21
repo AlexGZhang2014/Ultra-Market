@@ -6,4 +6,5 @@
   <p><%= link_to "Click here", item_path(@item), method: "patch" %> to buy this item!</p>
 <% elsif item_merchant_view %>
   <p><%= link_to "Click here", edit_merchant_item_path(@item) %> to edit this item.</p>
+  <p><%= link_to "Click here", item_path(@item), method: "delete" %> to edit this item.</p>
 <% end %>
