@@ -16,6 +16,12 @@ class ServicesController < ApplicationController
   end
 
   def create
+    @service = Service.new(service_params)
+    if @service.save
+      redirect_to merchant_service_path(@service.merchant, @service)
+    else
+      render :new
+    end
   end
 
   def show
