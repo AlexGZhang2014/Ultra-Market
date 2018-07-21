@@ -1,4 +1,6 @@
 <%= form_for service do |s| %>
+  <%= s.hidden_field :merchant_id %>
+
   <%= s.label :name %>
   <%= s.text_field :name %>
   <br>
