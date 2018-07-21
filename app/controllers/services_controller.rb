@@ -1,4 +1,6 @@
 class ServicesController < ApplicationController
+  before_action :set_service, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:merchant_id]
       @services = Merchant.find(params[:merchant_id]).services
@@ -17,10 +19,15 @@ class ServicesController < ApplicationController
   end
 
   def show
-    @service = Service.find(params[:id])
+  end
+
+  def update
   end
 
   private
+    def set_service
+      @service = Service.find(params[:id])
+    end
 
     def service_params
       params.require(:service).permit(:name, :description, :merchant_id, :client_id)
