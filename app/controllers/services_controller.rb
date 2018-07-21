@@ -54,6 +54,12 @@ class ServicesController < ApplicationController
     end
   end
 
+  def destroy
+    @service.destroy
+    flash[:notice] = "Service deleted."
+    redirect_to merchant_services_path(current_user.merchant)
+  end
+
   private
     def set_service
       @service = Service.find(params[:id])
