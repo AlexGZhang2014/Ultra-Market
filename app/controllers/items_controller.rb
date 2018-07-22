@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 
   def new
     if params[:merchant_id] && !Merchant.exists?(params[:merchant_id])
-      redirect_to merchants_path, alert: "Merchant not found."
+      redirect_to merchants_path, notice: "Merchant not found."
     else
       @item = Item.new(merchant_id: params[:merchant_id])
     end
