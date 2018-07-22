@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   resources :services
   post "/items/:id" => "items#buy"
   post "/services/:id" => "services#buy"
-  post "/complete/:id" => "services#complete"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
