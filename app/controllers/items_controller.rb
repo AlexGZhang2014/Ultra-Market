@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :update, :destroy]
+  before_action :set_item, only: [:show, :update, :destroy, :buy]
 
   def index
     if params[:merchant_id]
@@ -58,6 +58,11 @@ class ItemsController < ApplicationController
     @item.destroy
     flash[:notice] = "Item deleted."
     redirect_to merchant_items_path(current_user.merchant)
+  end
+
+  def buy
+    @item.update(client: current_user.client)
+    redirect_to client_items_path(current_user.client)
   end
 
   private
