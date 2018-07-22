@@ -62,6 +62,7 @@ class ItemsController < ApplicationController
 
   def buy
     @item.update(client: current_user.client)
+    flash[:notice] = "Item has been successfully purchased."
     redirect_to client_items_path(current_user.client)
   end
 
