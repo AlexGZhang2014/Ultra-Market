@@ -1,0 +1,20 @@
+<h1>Here are all of your current clients</h1>
+<ul>
+  <% @clients.each do |client| %>
+    <li><%= client.name %></li>
+    <ul>
+      <li>Items bought:</li>
+      <ul>
+        <% client.items.each do |item| %>
+          <li><%= item.name %></li>
+        <% end %>
+      </ul>
+      <li>Services bought:</li>
+      <ul>
+        <% client.services.each do |service| %>
+          <li><%= service.name %></li>
+        <% end %>
+      </ul>
+    </ul>
+  <% end %>
+</ul>
