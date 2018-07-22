@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_07_22_031241) do
     t.string "password_digest"
     t.integer "merchant_id"
     t.integer "client_id"
+    t.string "uid"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
