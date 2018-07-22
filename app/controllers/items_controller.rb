@@ -35,10 +35,10 @@ class ItemsController < ApplicationController
     if params[:merchant_id]
       merchant = Merchant.find_by(id: params[:merchant_id])
       if merchant.nil?
-        redirect_to merchants_path, alert: "Merchant not found."
+        redirect_to merchants_path, notice: "Merchant not found."
       else
         @item = merchant.items.find_by(id: params[:id])
-        redirect_to merchant_items_path(merchant), alert: "Item not found." if @item.nil?
+        redirect_to merchant_items_path(merchant), notice: "Item not found." if @item.nil?
       end
     else
       @item = Item.find(params[:id])

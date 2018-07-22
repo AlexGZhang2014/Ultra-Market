@@ -1,4 +1,7 @@
 <h1>Items</h1>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <ul>
   <% @items.each do |item| %>
     <li><%= link_to item.name, merchant_item_path(item.merchant, item) %></li>
