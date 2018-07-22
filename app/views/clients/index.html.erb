@@ -5,15 +5,19 @@
     <ul>
       <li>Items bought:</li>
       <ul>
-        <% client.items.each do |item| %>
-          <li><%= item.name %></li>
-        <% end %>
+        <!-- <% if client.items %> -->
+          <% client.items.each do |item| %>
+            <li><%= item.name %></li>
+          <% end %>
+        <!-- <% end %> -->
       </ul>
       <li>Services bought:</li>
       <ul>
-        <% client.services.each do |service| %>
-          <li><%= service.name %></li>
-        <% end %>
+        <!-- <% if client.services %> -->
+          <% client.services.each do |service| %>
+            <li><%= service.name %></li>
+          <% end %>
+        <!-- <% end %> -->
       </ul>
     </ul>
   <% end %>
