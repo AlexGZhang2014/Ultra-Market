@@ -3,6 +3,18 @@ class SessionsController < ApplicationController
     @user_account = UserAccount.new
   end
 
+  def create_user_with_github
+    @user_account = UserAccount.find_or_create_by(uid: auth['uid']) do |u|
+      u.username = auth['info']['name']
+      u.email = auth['info']['email']
+      u.image = auth['info']['image']
+    end
+
+    session[:user_account_id] = @user_account.id
+
+    redirect_to user_account_path(@user_account)
+  end
+
   def create
     @user_account = UserAccount.find_by(username: params[:username])
     if @user_account && @user_account.authenticate(params[:password])
@@ -17,5 +29,11 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to root_path
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 end
