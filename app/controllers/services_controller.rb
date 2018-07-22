@@ -61,7 +61,7 @@ class ServicesController < ApplicationController
   end
 
   def buy
-    @service.update(client: current_user.client)
+    @service.update(client: current_user.client, bought: true)
     flash[:notice] = "Service has been successfully purchased."
     redirect_to client_services_path(current_user.client)
   end
