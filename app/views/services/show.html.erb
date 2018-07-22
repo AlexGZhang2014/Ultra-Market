@@ -1,5 +1,5 @@
-<h1><%= @service.name %></h1>
-<p><%= @service.description %></p>
+<h1>Name: <%= @service.name %></h1>
+<p>Description: <%= @service.description %></p>
 <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account) %></p>
 
 <% if service_client_view %>
