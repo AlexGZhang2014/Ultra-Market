@@ -32,3 +32,7 @@ Class methods
 Items and services should both have #most_recent and #oldest for sorting by date.
 Items should have an #available class method that checks for items such that item.quantity > 0
 Services should have an #available class method that checks for services such that service.completed = false
+
+MUST FIX:
+- The clients index page will not display anything unless a client has bought a service from a merchant, regardless of whether they bought an item from the same merchant.
+- I have no idea why this happens...don't spend too much time on this.
