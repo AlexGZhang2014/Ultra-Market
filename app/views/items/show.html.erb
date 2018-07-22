@@ -1,6 +1,5 @@
 <h1>Name: <%= @item.name %></h1>
 <p>Description: <%= @item.description %></p>
-<p>Quantity: <%= @item.quantity %></p>
 <p>Sold by <%= link_to @item.merchant.name, user_account_path(@item.merchant.user_account) %></p>
 
 <% if item_client_view %>
