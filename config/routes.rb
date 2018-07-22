@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :services
   post "/items/:id" => "items#buy"
   post "/services/:id" => "services#buy"
+  get "/auth/github/callback" => "sessions#create_user_with_github"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
