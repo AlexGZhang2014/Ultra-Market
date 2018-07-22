@@ -7,6 +7,7 @@
     <p><%= link_to "Click here", new_merchant_service_path(@user_account.merchant) %> to add a new service for sale!</p>
     <p><%= link_to "Click here", merchant_items_path(@user_account.merchant) %> to see all the items you've put up for sale!</p>
     <p><%= link_to "Click here", merchant_services_path(@user_account.merchant) %> to see all the services you've put up for sale!</p>
+    <p><%= link_to "Click here", clients_path %> to see all of your current clients.</p>
   <% end %>
 
   <% if @user_account.client.nil? %>
