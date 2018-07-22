@@ -12,7 +12,7 @@ class ServicesController < ApplicationController
       if params[:merchant_id]
         @services = Merchant.find(params[:merchant_id]).services.available
       elsif params[:client_id]
-        @services = Client.find(params[:client_id]).services.available
+        @services = Client.find(params[:client_id]).services
       else
         @services = Service.available
       end
