@@ -10,9 +10,9 @@ class ItemsController < ApplicationController
       end
     else
       if params[:merchant_id]
-        @items = Merchant.find(params[:merchant_id]).items
+        @items = Merchant.find(params[:merchant_id]).items.available
       elsif params[:client_id]
-        @items = Client.find(params[:client_id]).items
+        @items = Client.find(params[:client_id]).items.available
       else
         @items = Item.available
       end

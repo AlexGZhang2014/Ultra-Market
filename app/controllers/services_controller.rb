@@ -2,12 +2,20 @@ class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :update, :destroy, :buy]
 
   def index
-    if params[:merchant_id]
-      @services = Merchant.find(params[:merchant_id]).services
-    elsif params[:client_id]
-      @services = Client.find(params[:client_id]).services
+    if !params[:date].blank?
+      if params[:date] == "Most Recent"
+        @services = Service.most_recent.available
+      else
+        @services = Service.oldest.available
+      end
     else
-      @services = Service.all
+      if params[:merchant_id]
+        @services = Merchant.find(params[:merchant_id]).services.available
+      elsif params[:client_id]
+        @services = Client.find(params[:client_id]).services.available
+      else
+        @services = Service.available
+      end
     end
   end
 
