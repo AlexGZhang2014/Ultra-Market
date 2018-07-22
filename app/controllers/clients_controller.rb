@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   def index
-    @clients = current_user.clients
+    @clients = current_user.merchant.clients
   end
 
   def create
