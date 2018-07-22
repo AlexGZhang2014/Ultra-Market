@@ -1,4 +1,7 @@
 <h1>Name: <%= @service.name %></h1>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <p>Description: <%= @service.description %></p>
 <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account) %></p>
 
@@ -9,9 +12,9 @@
   <p><%= link_to "Click here", services_path %> to view all current services.</p>
 <% elsif service_merchant_view %>
   <% if @service.bought && !@service.completed %>
-    <p><%= link_to "Click here", url: "/complete/#{@service.id}", method: "post" %> to mark this service as complete.</p>
+    <p><%= link_to "Click here", service_path(@service), method: "post" %> to mark this service as complete.</p>
   <% elsif @service.bought && @service.completed %>
-    <p>You have completed this service.</p>
+    <p><strong>You have completed this service.</strong></p>
   <% else %>
     <p><%= link_to "Click here", edit_merchant_service_path(@service.merchant, @service) %> to edit this service.</p>
     <p><%= link_to "Click here", service_path(@service), method: "delete" %> to delete this service.</p>
