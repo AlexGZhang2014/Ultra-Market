@@ -3,5 +3,5 @@ class Service < ApplicationRecord
   belongs_to :client, optional: true
   scope :most_recent, -> { order("services.updated_at DESC") }
   scope :oldest, -> { order("services.updated_at ASC") }
-  scope :available, -> { where(completed: false) }
+  scope :available, -> { where(bought: false) }
 end
