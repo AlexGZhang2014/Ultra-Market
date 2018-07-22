@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
   resources :items
   resources :services
+  post "/items/buy" => "items#buy"
+  post "/services/buy" => "services#buy"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
