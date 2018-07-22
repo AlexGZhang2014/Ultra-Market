@@ -6,7 +6,13 @@
   <p><%= link_to "Click here", service_path(@service), method: "post" %> to buy this service!</p>
   <p><%= link_to "Click here", services_path %> to view all current services.</p>
 <% elsif service_merchant_view %>
-  <p><%= link_to "Click here", edit_merchant_service_path(@service.merchant, @service) %> to edit this service.</p>
-  <p><%= link_to "Click here", service_path(@service), method: "delete" %> to delete this service.</p>
-  <p><%= link_to "Click here", merchant_services_path(current_user.merchant) %> to view all of your services.</p>
+  <% if @service.bought && !@service.completed %>
+    <p>Click here to mark this service as complete.</p>
+  <% elsif @service.bought && @service.completed %>
+    <p>You have completed this service.</p>
+  <% else %>
+    <p><%= link_to "Click here", edit_merchant_service_path(@service.merchant, @service) %> to edit this service.</p>
+    <p><%= link_to "Click here", service_path(@service), method: "delete" %> to delete this service.</p>
+    <p><%= link_to "Click here", merchant_services_path(current_user.merchant) %> to view all of your services.</p>
+  <% end %>
 <% end %>
