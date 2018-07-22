@@ -3,11 +3,13 @@
 <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account) %></p>
 
 <% if service_client_view %>
-  <p><%= link_to "Click here", service_path(@service), method: "post" %> to buy this service!</p>
+  <% if !@service.bought %>
+    <p><%= link_to "Click here", service_path(@service), method: "post" %> to buy this service!</p>
+  <% end %>
   <p><%= link_to "Click here", services_path %> to view all current services.</p>
 <% elsif service_merchant_view %>
   <% if @service.bought && !@service.completed %>
-    <p>Click here to mark this service as complete.</p>
+    <p><%= link_to "Click here", url: "/complete/#{@service.id}", method: "post" %> to mark this service as complete.</p>
   <% elsif @service.bought && @service.completed %>
     <p>You have completed this service.</p>
   <% else %>
