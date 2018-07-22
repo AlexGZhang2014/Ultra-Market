@@ -13,7 +13,7 @@ class ServicesController < ApplicationController
 
   def new
     if params[:merchant_id] && !Merchant.exists?(params[:merchant_id])
-      redirect_to merchants_path, alert: "Merchant not found."
+      redirect_to merchants_path, notice: "Merchant not found."
     else
       @service = Service.new(merchant_id: params[:merchant_id])
     end
@@ -35,10 +35,10 @@ class ServicesController < ApplicationController
     if params[:merchant_id]
       merchant = Merchant.find_by(id: params[:merchant_id])
       if merchant.nil?
-        redirect_to merchants_path, alert: "Merchant not found."
+        redirect_to merchants_path, notice: "Merchant not found."
       else
         @service = merchant.services.find_by(id: params[:id])
-        redirect_to merchant_services_path(merchant), alert: "Service not found." if @service.nil?
+        redirect_to merchant_services_path(merchant), notice: "Service not found." if @service.nil?
       end
     else
       @service = Service.find(params[:id])
