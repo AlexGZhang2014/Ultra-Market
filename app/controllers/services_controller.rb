@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :update, :destroy]
+  before_action :set_service, only: [:show, :update, :destroy, :buy]
 
   def index
     if params[:merchant_id]
@@ -58,6 +58,11 @@ class ServicesController < ApplicationController
     @service.destroy
     flash[:notice] = "Service deleted."
     redirect_to merchant_services_path(current_user.merchant)
+  end
+
+  def buy
+    @service.update(client: current_user.client)
+    redirect_to client_services_path(current_user.client)
   end
 
   private
