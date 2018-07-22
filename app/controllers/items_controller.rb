@@ -2,12 +2,20 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :destroy, :buy]
 
   def index
-    if params[:merchant_id]
-      @items = Merchant.find(params[:merchant_id]).items
-    elsif params[:client_id]
-      @items = Client.find(params[:client_id]).items
+    if !params[:date].blank?
+      if params[:date] == "Most Recent"
+        @items = Item.most_recent.available
+      else
+        @items = Item.oldest.available
+      end
     else
-      @items = Item.all
+      if params[:merchant_id]
+        @items = Merchant.find(params[:merchant_id]).items
+      elsif params[:client_id]
+        @items = Client.find(params[:client_id]).items
+      else
+        @items = Item.available
+      end
     end
   end
 
