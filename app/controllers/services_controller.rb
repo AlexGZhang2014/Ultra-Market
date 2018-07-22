@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :update, :destroy, :buy]
+  before_action :set_service, only: [:show, :update, :destroy, :buy, :complete]
 
   def index
     if !params[:date].blank?
@@ -74,12 +74,18 @@ class ServicesController < ApplicationController
     redirect_to client_services_path(current_user.client)
   end
 
+  def complete
+    @service.update(completed: true)
+    flash[:notice] = "Service is now completed!"
+    redirect_to client_service_path(@service.client, @service)
+  end
+
   private
     def set_service
       @service = Service.find(params[:id])
     end
 
     def service_params
-      params.require(:service).permit(:name, :description, :completed, :merchant_id, :client_id)
+      params.require(:service).permit(:name, :description, :bought, :completed, :merchant_id, :client_id)
     end
 end
