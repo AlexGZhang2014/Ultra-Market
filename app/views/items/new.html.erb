@@ -1,12 +1,2 @@
 <h1>Create a new item</h1>
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@item.errors.count, "error") %> prevented you from creating your item:</h2>
-    <ul>
-    <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
 <%= render partial: "form", locals: {item: @item} %>
