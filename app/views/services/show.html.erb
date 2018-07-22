@@ -3,7 +3,7 @@
 <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account) %></p>
 
 <% if service_client_view %>
-  <p><%= link_to "Click here", services_buy_path(@service), method: "post" %> to buy this service!</p>
+  <p><%= link_to "Click here", service_path(@service), method: "post" %> to buy this service!</p>
   <p><%= link_to "Click here", services_path %> to view all current services.</p>
 <% elsif service_merchant_view %>
   <p><%= link_to "Click here", edit_merchant_service_path(@service.merchant, @service) %> to edit this service.</p>
