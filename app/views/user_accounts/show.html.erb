@@ -15,9 +15,10 @@
     <p><%= link_to "Click here", client_items_path(@user_account.client) %> to see all the items you've bought!</p>
     <p><%= link_to "Click here", client_services_path(@user_account.client) %> to see all the services you've bought!</p>
   <% end %>
-
+  <p><%= link_to "Click here", items_path %> to see all items for sale!</p>
+  <p><%= link_to "Click here", services_path %> to see all services for sale!</p>
   <p><%= link_to "Log out", logout_path %></p>
-  
+
 <% else %>
   <p><%= link_to "Click here", items_path %> to see all items for sale!</p>
   <p><%= link_to "Click here", services_path %> to see all services for sale!</p>
