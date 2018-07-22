@@ -1,0 +1,6 @@
+<h1>All Users Currently Selling Something</h1>
+<ul>
+<% @merchants.each do |merchant| %>
+  <li><%= link_to merchant.name, user_account_path(merchant.user_account) %></li>
+<% end %>
+</ul>
