@@ -1,13 +1,13 @@
 <h1>Here are all of your current clients</h1>
 <ul>
   <% @clients.each do |client| %>
-    <li><%= client.name %></li>
+    <li><%= link_to client.name, user_account_path(client.user_account) %></li>
     <ul>
       <li>Items bought:</li>
       <ul>
         <!-- <% if client.items %> -->
           <% client.items.each do |item| %>
-            <li><%= item.name %></li>
+            <li><%= link_to item.name, client_item_path(item.client, item) %></li>
           <% end %>
         <!-- <% end %> -->
       </ul>
@@ -15,7 +15,7 @@
       <ul>
         <!-- <% if client.services %> -->
           <% client.services.each do |service| %>
-            <li><%= service.name %></li>
+            <li><%= link_to service.name, client_service_path(service.client, service) %></li>
           <% end %>
         <!-- <% end %> -->
       </ul>
