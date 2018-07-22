@@ -2,6 +2,10 @@
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+<%= form_tag("/services", method: "get") do %>
+  <%= select_tag "date", options_for_select(["Most Recent", "Oldest"]), include_blank: true %>
+  <%= submit_tag "Filter" %>
+<% end %>
 <ul>
   <% @services.each do |service| %>
     <li><%= link_to service.name, merchant_service_path(service.merchant, service) %></li>
