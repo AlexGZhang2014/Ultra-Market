@@ -58,3 +58,15 @@
 	padding: 40px 40px 40px;
   background-color: #C3FFEE;
 }
+
+.logged_in p {
+  padding: 20px;
+}
+
+.logged_in h1 {
+  padding: 20px;
+}
+
+.logged_in ul {
+  padding: 20px;
+}
