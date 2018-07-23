@@ -13,6 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+
+ * {
+ 	padding: 0;
+ 	margin: 0;
+  font-family: 'Libre Baskerville', serif;
+ }
+
+ body {
+   background-color: #2FA9F2;
+   text-align: left;
+ }
+
 .field_with_errors {
   border: 1px solid red;
+}
+
+.not_logged_in {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+	padding: 40px 40px 40px;
+  background-color: #C3FFEE;
+}
+
+.not_logged_in p {
+  padding: 20px;
+}
+
+.not_logged_in h1 {
+  padding: 20px;
+}
+
+.not_logged_in ul {
+  padding: 20px;
 }
