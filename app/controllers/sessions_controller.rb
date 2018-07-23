@@ -4,23 +4,9 @@ class SessionsController < ApplicationController
   end
 
   def create_user_with_github
-    @user_account = UserAccount.find_or_create_by(uid: auth['uid']) do |u|
-      u.username = auth['info']['name']
-      u.email = auth['info']['email']
-      u.image = auth['info']['image']
-    end
-
-    session[:user_account_id] = @user_account.id
-
-    render "home"
-  end
-
-  def home
-    @user_account = UserAccount.find_or_create_by(uid: auth['uid']) do |u|
-      u.username = auth['info']['name']
-      u.email = auth['info']['email']
-      u.image = auth['info']['image']
-    end
+    user = UserAccount.find_by_provider_and_uid(auth["provider"], auth["uid"]) || UserAccount.create_with_omniauth(auth)
+    session[:user_account_id] = user.id
+    redirect_to user_account_path(current_user)
   end
 
   def create
