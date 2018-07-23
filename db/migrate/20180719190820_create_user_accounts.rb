@@ -7,7 +7,7 @@ class CreateUserAccounts < ActiveRecord::Migration[5.2]
       t.integer :merchant_id
       t.integer :client_id
       t.string :uid
-      t.string :image
+      t.string :provider
 
       t.timestamps
     end
