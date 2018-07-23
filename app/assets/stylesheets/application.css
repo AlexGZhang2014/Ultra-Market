@@ -50,3 +50,11 @@
 .not_logged_in ul {
   padding: 20px;
 }
+
+.logged_in {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+	padding: 40px 40px 40px;
+  background-color: #C3FFEE;
+}
