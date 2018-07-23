@@ -1,9 +1,11 @@
-<h1>All Users Currently Selling Something</h1>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-<ul>
-<% @merchants.each do |merchant| %>
-  <li><%= link_to merchant.name, user_account_path(merchant.user_account) %></li>
-<% end %>
-</ul>
+<div class="logged_in">
+  <h1>All Users Currently Selling Something</h1>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  <ul>
+  <% @merchants.each do |merchant| %>
+    <li><%= link_to merchant.name, user_account_path(merchant.user_account) %></li>
+  <% end %>
+  </ul>
+</div>
