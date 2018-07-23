@@ -12,7 +12,15 @@ class SessionsController < ApplicationController
 
     session[:user_account_id] = @user_account.id
 
-    redirect_to user_account_path(@user_account)
+    render "home"
+  end
+
+  def home
+    @user_account = UserAccount.find_or_create_by(uid: auth['uid']) do |u|
+      u.username = auth['info']['name']
+      u.email = auth['info']['email']
+      u.image = auth['info']['image']
+    end
   end
 
   def create
