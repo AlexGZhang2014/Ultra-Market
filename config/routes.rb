@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static#home"
-  resources :user_accounts
+  resources :user_accounts, only: [:new, :create, :show]
   get "/items/most_recent" => "items#most_recent"
   get "/items/oldest" => "items#oldest"
   get "/services/most_recent" => "services#most_recent"
