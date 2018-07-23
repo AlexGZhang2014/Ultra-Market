@@ -1,24 +1,26 @@
-<h1>Here are all of your current clients</h1>
-<ul>
-  <% @clients.uniq.each do |client| %>
-    <li><%= link_to client.name, user_account_path(client.user_account) %></li>
-    <ul>
-      <li>Items bought:</li>
+<div class="logged_in">
+  <h1>Here are all of your current clients</h1>
+  <ul>
+    <% @clients.uniq.each do |client| %>
+      <li><%= link_to client.name, user_account_path(client.user_account) %></li>
       <ul>
-        <!-- <% if client.items %> -->
-          <% client.items.each do |item| %>
-            <li><%= link_to item.name, client_item_path(item.client, item) %></li>
-          <% end %>
-        <!-- <% end %> -->
+        <li>Items bought:</li>
+        <ul>
+          <!-- <% if client.items %> -->
+            <% client.items.each do |item| %>
+              <li><%= link_to item.name, client_item_path(item.client, item) %></li>
+            <% end %>
+          <!-- <% end %> -->
+        </ul>
+        <li>Services bought:</li>
+        <ul>
+          <!-- <% if client.services %> -->
+            <% client.services.each do |service| %>
+              <li><%= link_to service.name, client_service_path(service.client, service) %></li>
+            <% end %>
+          <!-- <% end %> -->
+        </ul>
       </ul>
-      <li>Services bought:</li>
-      <ul>
-        <!-- <% if client.services %> -->
-          <% client.services.each do |service| %>
-            <li><%= link_to service.name, client_service_path(service.client, service) %></li>
-          <% end %>
-        <!-- <% end %> -->
-      </ul>
-    </ul>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+</div>

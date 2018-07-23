@@ -1,15 +1,17 @@
-<h1>Items</h1>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-<%= form_tag("/items", method: "get") do %>
-  <%= select_tag "date", options_for_select(["Most Recent", "Oldest"]), include_blank: true %>
-  <%= submit_tag "Filter" %>
-<% end %>
-<ul>
-  <% @items.each do |item| %>
-    <li><%= link_to item.name, merchant_item_path(item.merchant, item) %></li>
+<div class="logged_in">
+  <h1>Items</h1>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
   <% end %>
-</ul>
+  <%= form_tag("/items", method: "get") do %>
+    <%= select_tag "date", options_for_select(["Most Recent", "Oldest"]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+  <ul>
+    <% @items.each do |item| %>
+      <li><%= link_to item.name, merchant_item_path(item.merchant, item) %></li>
+    <% end %>
+  </ul>
 
-<p><%= link_to "Click here", user_account_path(current_user) %> to return to your account page.</p>
+  <p><%= link_to "Click here", user_account_path(current_user) %> to return to your account page.</p>
+</div>
