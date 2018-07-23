@@ -3,10 +3,14 @@
 <p>Sold by <%= link_to @item.merchant.name, user_account_path(@item.merchant.user_account) %></p>
 
 <% if item_client_view %>
-  <p><%= link_to "Click here", item_path(@item), method: "post" %> to buy this item!</p>
+  <% if !@item.bought %>
+    <p><%= link_to "Click here", item_path(@item), method: "post" %> to buy this item!</p>
+  <% end %>
   <p><%= link_to "Click here", items_path %> to view all items for sale.</p>
 <% elsif item_merchant_view %>
-  <p><%= link_to "Click here", edit_merchant_item_path(@item.merchant, @item) %> to edit this item.</p>
-  <p><%= link_to "Click here", item_path(@item), method: "delete" %> to delete this item.</p>
+  <% if !@item.bought %>
+    <p><%= link_to "Click here", edit_merchant_item_path(@item.merchant, @item) %> to edit this item.</p>
+    <p><%= link_to "Click here", item_path(@item), method: "delete" %> to delete this item.</p>
+  <% end %>
   <p><%= link_to "Click here", merchant_items_path(current_user.merchant) %> to view all of your items.</p>
 <% end %>
