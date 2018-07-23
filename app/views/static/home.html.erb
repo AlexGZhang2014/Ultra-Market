@@ -1,14 +1,16 @@
-<h1>Welcome to Ultra Market!</h1>
-<ul>
-  <li>Do you make things for a living and want to sell them online?</li>
-  <li>Are you looking for something specific to buy that you can't find anywhere else?</li>
-  <li>Do you want to offer your unique services to a community with endless requests?</li>
-  <li>Are you seeking someone to help you with a very individualized task?</li>
-</ul>
-<p>Well, if you've answered "YES" to any of the above, you've come to the right place!
-  Ultra market allows you to connect with others through the power of commerce in the coolest free marketplace ever!
-  No matter what you want to buy or sell, you'll most definitely find what you need here.
-  Just sign up for an account below to get started!</p>
-<p><%= link_to "Sign Up", new_user_account_path %></p>
-<p><%= link_to "Log In", login_path %></p>
-<p><%= link_to('Log in with GitHub!', '/auth/github') %></p>
+<div class="not_logged_in">
+  <h1>Welcome to Ultra Market!</h1>
+  <ul>
+    <li>Do you make things for a living and want to sell them online?</li>
+    <li>Are you looking for something specific to buy that you can't find anywhere else?</li>
+    <li>Do you want to offer your unique services to a community with endless requests?</li>
+    <li>Are you seeking someone to help you with a very individualized task?</li>
+  </ul>
+  <p>Well, if you've answered "YES" to any of the above, you've come to the right place!
+    Ultra market allows you to connect with others through the power of commerce in the coolest free marketplace ever!
+    No matter what you want to buy or sell, you'll most definitely find what you need here.
+    Just sign up for an account below to get started!</p>
+  <p><%= link_to "Sign Up", new_user_account_path %></p>
+  <p><%= link_to "Log In", login_path %></p>
+  <p><%= link_to('Log in with GitHub!', '/auth/github') %></p>
+</div>

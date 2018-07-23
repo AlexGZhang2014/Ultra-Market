@@ -1,12 +1,14 @@
-<h1>Create your account here!</h1>
-<% if @user_account.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user_account.errors.count, "error") %> prevented you from creating your account:</h2>
-    <ul>
-    <% @user_account.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= render partial: "form", locals: {user_account: @user_account} %>
+<div class="not_logged_in">
+  <h1>Create your account here!</h1>
+  <% if @user_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_account.errors.count, "error") %> prevented you from creating your account:</h2>
+      <ul>
+      <% @user_account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render partial: "form", locals: {user_account: @user_account} %>
+</div>
