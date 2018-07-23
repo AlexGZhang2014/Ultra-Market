@@ -4,9 +4,9 @@ class ServicesController < ApplicationController
   def index
     if !params[:date].blank?
       if params[:date] == "Most Recent"
-        @services = Service.most_recent.available
+        redirect_to controller: "services", action: "most_recent"
       else
-        @services = Service.oldest.available
+        redirect_to controller: "services", action: "oldest"
       end
     else
       if params[:merchant_id]
@@ -17,6 +17,14 @@ class ServicesController < ApplicationController
         @services = Service.available
       end
     end
+  end
+
+  def most_recent
+    @services = Service.most_recent.available
+  end
+
+  def oldest
+    @services = Service.oldest.available
   end
 
   def new
