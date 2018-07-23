@@ -4,9 +4,9 @@ class ItemsController < ApplicationController
   def index
     if !params[:date].blank?
       if params[:date] == "Most Recent"
-        @items = Item.most_recent.available
+        redirect_to controller: "items", action: "most_recent"
       else
-        @items = Item.oldest.available
+        redirect_to controller: "items", action: "oldest"
       end
     else
       if params[:merchant_id]
@@ -17,6 +17,14 @@ class ItemsController < ApplicationController
         @items = Item.available
       end
     end
+  end
+
+  def most_recent
+    @items = Item.most_recent.available
+  end
+
+  def oldest
+    @items = Item.oldest.available
   end
 
   def new
