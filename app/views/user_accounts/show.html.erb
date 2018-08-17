@@ -17,7 +17,8 @@
       <p><%= link_to "Click here", client_items_path(@user_account.client) %> to see all the items you've bought!</p>
       <p><%= link_to "Click here", client_services_path(@user_account.client) %> to see all the services you've bought!</p>
     <% end %>
-    <p><%= link_to "Click here", items_path %> to see all items for sale!</p>
+    <p><%= link_to "Click here", items_path, id: "js-all-items" %> to see all items for sale!</p>
+    <div id="all-items"></div>
     <p><%= link_to "Click here", services_path %> to see all services for sale!</p>
     <p><%= link_to "Log out", logout_path %></p>
 
@@ -26,3 +27,19 @@
     <p><%= link_to "Click here", services_path %> to see all services for sale!</p>
   <% end %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("#js-all-items").on("click", function(e) {
+      e.preventDefault();
+      $.get("/items.json", function(data) {
+        for (const i in data) {
+          $("#all-items").append(`
+            <h4>${data[i].name}</h4>
+            <p>${data[i].description}</p>
+            `);
+        }
+      });
+    });
+  });
+</script>
