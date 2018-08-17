@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
     else
       if params[:merchant_id]
         @items = Merchant.find(params[:merchant_id]).items.available
+        respond_to do |format|
+          format.html { render :index }
+          format.json { render json: @items }
+        end
       elsif params[:client_id]
         @items = Client.find(params[:client_id]).items
       else
