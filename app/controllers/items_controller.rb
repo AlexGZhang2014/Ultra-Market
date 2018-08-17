@@ -15,6 +15,10 @@ class ItemsController < ApplicationController
         @items = Client.find(params[:client_id]).items
       else
         @items = Item.available
+        respond_to do |format|
+          format.html { render :index }
+          format.json { render json: @items }
+        end
       end
     end
   end
@@ -45,6 +49,10 @@ class ItemsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @item }
+    end
   end
 
   def edit
