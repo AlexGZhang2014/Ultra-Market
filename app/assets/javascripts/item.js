@@ -1,8 +1,8 @@
 $(function() {
   $("form#new_item").submit(function(e) {
     e.preventDefault();
-    let values = $(this).serialize();
-    let create_item = $.post("/items", values);
+    let $form_values = $(this).serialize();
+    let create_item = $.post("/items", $form_values);
     create_item.done(function(data) {
       let item = data;
       $("#itemName").text(item.name);
