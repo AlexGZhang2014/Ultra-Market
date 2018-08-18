@@ -1,4 +1,26 @@
 <div class="logged_in">
   <h1>Create a new item</h1>
   <%= render partial: "form", locals: {item: @item} %>
+  <br>
+  <div id="newItem">
+    <h2 id="itemName"></h2>
+    <p id="itemDescription"></p>
+    <p id="itemMerchant"></p>
+  </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("form").submit(function(e) {
+      e.preventDefault();
+      let values = $(this).serialize();
+      let create_item = $.post("/items", values);
+      create_item.done(function(data) {
+        let item = data;
+        $("#itemName").text(item.name);
+        $("#itemDescription").text(item.description);
+        $("#itemMerchant").text(`Sold by: ${item.merchant.name}`);
+      });
+    });
+  });
+</script>
