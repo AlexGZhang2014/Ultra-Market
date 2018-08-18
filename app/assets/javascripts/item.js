@@ -6,33 +6,46 @@ function Item(attributes) {
   this.merchant = attributes.merchant;
 }
 
+Item.submitCreateForm = function(e) {
+  e.preventDefault();
+  let $form_values = $(this).serialize();
+  $.post("/items", $form_values, Item.successCreate, "json");
+}
+
+Item.listClick = function(e) {
+  e.preventDefault();
+  $.get("/items.json", Item.successList);
+}
+
+Item.successCreate = function(data) {
+  let item = new Item(data);
+  return item.createItem();
+}
+
+Item.successList = function(data) {
+  for (const i in data) {
+    let item = new Item(data[i]);
+    item.listItem();
+  }
+}
+
 Item.prototype.createItem = function() {
   $("#itemName").text(this.name);
   $("#itemDescription").text(this.description);
   $("#itemMerchant").text(`Sold by: ${this.merchant.name}`);
 }
 
-$(function() {
-  $("form#new_item").submit(function(e) {
-    e.preventDefault();
-    let $form_values = $(this).serialize();
-    $.post("/items", $form_values, function(data) {
-      let item = new Item(data);
-      return item.createItem();
-    }, "json");
-  });
+Item.prototype.listItem = function() {
+  $("#all-items").append(`
+    <h4>${this.name}</h4>
+    <p>${this.description}</p>
+    `);
+}
 
-  $("#js-all-items").on("click", function(e) {
-    e.preventDefault();
-    $.get("/items.json", function(data) {
-      for (const i in data) {
-        $("#all-items").append(`
-          <h4>${data[i].name}</h4>
-          <p>${data[i].description}</p>
-          `);
-      }
-    });
-  });
+$(function() {
+  $("form#new_item").submit(Item.submitCreateForm);
+
+  $("#js-all-items").on("click", Item.listClick);
 
   $("#js-all-merchants").on("click", function(e) {
     e.preventDefault();
