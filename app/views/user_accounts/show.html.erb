@@ -20,12 +20,16 @@
     <p><%= link_to "Click here", items_path, id: "js-all-items" %> to see all items for sale!</p>
     <div id="all-items"></div>
     <p><%= link_to "Click here", services_path %> to see all services for sale!</p>
+    <p><%= link_to "Click here", merchants_path, id: "js-all-merchants" %> to see all current merchants and their products.</p>
+    <div id="all-merchants"></div>
     <p><%= link_to "Log out", logout_path %></p>
 
   <% else %>
     <p><%= link_to "Click here", items_path, id: "js-all-items" %> to see all items for sale!</p>
     <div id="all-items"></div>
     <p><%= link_to "Click here", services_path %> to see all services for sale!</p>
+    <p><%= link_to "Click here", merchants_path, id: "js-all-merchants" %> to see all current merchants and their products.</p>
+    <div id="all-merchants"></div>
   <% end %>
 </div>
 
@@ -39,6 +43,21 @@
             <h4>${data[i].name}</h4>
             <p>${data[i].description}</p>
             `);
+        }
+      });
+    });
+
+    $("#js-all-merchants").on("click", function(e) {
+      e.preventDefault();
+      $.get("/merchants.json", function(data) {
+        for (const m in data) {
+          $("#all-merchants").append(`<h3>${data[m]["name"]}</h3><br>`);
+          for (const i in data[m]["items"]) {
+            $("#all-merchants").append(`
+              <h4>${data[m]["items"][i].name}</h4>
+              <p>${data[m]["items"][i].description}</p>
+              `)
+          }
         }
       });
     });
