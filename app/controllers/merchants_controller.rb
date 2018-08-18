@@ -1,6 +1,10 @@
 class MerchantsController < ApplicationController
   def index
     @merchants = Merchant.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @merchants }
+    end
   end
 
   def create
