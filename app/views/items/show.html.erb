@@ -1,7 +1,9 @@
 <div class="logged_in">
-  <h1>Name: <%= @item.name %></h1>
-  <p>Description: <%= @item.description %></p>
-  <p>Sold by <%= link_to @item.merchant.name, user_account_path(@item.merchant.user_account) %></p>
+  <h1 id="itemName">Name: <%= @item.name %></h1>
+  <p id="itemDescription">Description: <%= @item.description %></p>
+  <p>Sold by <%= link_to @item.merchant.name, user_account_path(@item.merchant.user_account), id: "itemMerchant" %></p>
+
+  <button href="#" id="js-next-item" data-id="<%= @item.id %>">Next item</button>
 
   <% if item_client_view %>
     <% if !@item.bought %>
@@ -16,3 +18,17 @@
     <p><%= link_to "Click here", merchant_items_path(current_user.merchant) %> to view all of your items.</p>
   <% end %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("#js-next-item").on("click", function() {
+      let nextId = parseInt($("#js-next-item").attr("data-id")) + 1;
+      $.get("/items/" + nextId + ".json", function(data) {
+        $("#itemName").text(data.name);
+        $("#itemDescription").text(data.description);
+        $("#itemMerchant").text(data.merchant.name);
+        $("#js-next-item").attr("data-id", data.id);
+      });
+    });
+  });
+</script>
