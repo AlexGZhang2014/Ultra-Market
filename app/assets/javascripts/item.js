@@ -1,12 +1,24 @@
+function Item(attributes) {
+  this.name = attributes.name;
+  this.description = attributes.description;
+  this.id = attributes.id;
+  this.bought = attributes.bought;
+  this.merchant = attributes.merchant;
+}
+
+Item.prototype.createItem = function() {
+  $("#itemName").text(this.name);
+  $("#itemDescription").text(this.description);
+  $("#itemMerchant").text(`Sold by: ${this.merchant.name}`);
+}
+
 $(function() {
   $("form#new_item").submit(function(e) {
     e.preventDefault();
     let $form_values = $(this).serialize();
     $.post("/items", $form_values, function(data) {
-      let item = data;
-      $("#itemName").text(item.name);
-      $("#itemDescription").text(item.description);
-      $("#itemMerchant").text(`Sold by: ${item.merchant.name}`);
+      let item = new Item(data);
+      return item.createItem();
     }, "json");
   });
 
