@@ -2,13 +2,12 @@ $(function() {
   $("form#new_item").submit(function(e) {
     e.preventDefault();
     let $form_values = $(this).serialize();
-    let create_item = $.post("/items", $form_values);
-    create_item.done(function(data) {
+    $.post("/items", $form_values, function(data) {
       let item = data;
       $("#itemName").text(item.name);
       $("#itemDescription").text(item.description);
       $("#itemMerchant").text(`Sold by: ${item.merchant.name}`);
-    });
+    }, "json");
   });
 
   $("#js-all-items").on("click", function(e) {
