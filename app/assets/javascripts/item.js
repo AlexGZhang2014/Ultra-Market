@@ -17,6 +17,11 @@ Item.listClick = function(e) {
   $.get("/items.json", Item.successList);
 }
 
+Item.nextItem = function() {
+  let nextId = parseInt($("#js-next-item").attr("data-id")) + 1;
+  $.get("/items/" + nextId + ".json", Item.successNextItem);
+}
+
 Item.successCreate = function(data) {
   let item = new Item(data);
   return item.createItem();
@@ -27,6 +32,11 @@ Item.successList = function(data) {
     let item = new Item(data[i]);
     item.listItem();
   }
+}
+
+Item.successNextItem = function(data) {
+  let item = new Item(data);
+  return item.displayNextItemData();
 }
 
 Item.prototype.createItem = function() {
@@ -42,10 +52,19 @@ Item.prototype.listItem = function() {
     `);
 }
 
+Item.prototype.displayNextItemData = function() {
+  $("#itemName").text(this.name);
+  $("#itemDescription").text(this.description);
+  $("#itemMerchant").text(this.merchant.name);
+  $("#js-next-item").attr("data-id", this.id);
+}
+
 $(function() {
   $("form#new_item").submit(Item.submitCreateForm);
 
   $("#js-all-items").on("click", Item.listClick);
+
+  $("#js-next-item").on("click", Item.nextItem);
 
   // $("#js-all-merchants").on("click", function(e) {
   //   e.preventDefault();
@@ -61,14 +80,4 @@ $(function() {
   //     }
   //   });
   // });
-
-  $("#js-next-item").on("click", function() {
-    let nextId = parseInt($("#js-next-item").attr("data-id")) + 1;
-    $.get("/items/" + nextId + ".json", function(data) {
-      $("#itemName").text(data.name);
-      $("#itemDescription").text(data.description);
-      $("#itemMerchant").text(data.merchant.name);
-      $("#js-next-item").attr("data-id", data.id);
-    });
-  });
 });
