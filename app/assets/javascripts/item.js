@@ -59,25 +59,16 @@ Item.prototype.displayNextItemData = function() {
   $("#js-next-item").attr("data-id", this.id);
 }
 
-$(function() {
+Item.addJavaScriptListener = function() {
   $("form#new_item").submit(Item.submitCreateForm);
-
   $("#js-all-items").on("click", Item.listClick);
-
   $("#js-next-item").on("click", Item.nextItem);
+}
 
-  // $("#js-all-merchants").on("click", function(e) {
-  //   e.preventDefault();
-  //   $.get("/merchants.json", function(data) {
-  //     for (const m in data) {
-  //       $("#all-merchants").append(`<h3>${data[m]["name"]}</h3><br>`);
-  //       for (const i in data[m]["items"]) {
-  //         $("#all-merchants").append(`
-  //           <h4>${data[m]["items"][i].name}</h4>
-  //           <p>${data[m]["items"][i].description}</p>
-  //           `)
-  //       }
-  //     }
-  //   });
-  // });
+Item.ready = function() {
+  Item.addJavaScriptListener();
+}
+
+$(function() {
+  Item.ready();
 });

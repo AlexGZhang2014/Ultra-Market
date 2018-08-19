@@ -47,6 +47,14 @@ Merchant.prototype.listServices = function() {
   }
 }
 
-$(function() {
+Merchant.addJavaScriptListener = function() {
   $("#js-all-merchants").on("click", Merchant.listClick);
+}
+
+Merchant.ready = function() {
+  Merchant.addJavaScriptListener();
+}
+
+$(function() {
+  Merchant.ready();
 });

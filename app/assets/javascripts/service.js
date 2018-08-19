@@ -60,10 +60,16 @@ Service.prototype.displayNextServiceData = function() {
   $("#js-next-service").attr("data-id", this.id);
 }
 
-$(function() {
+Service.addJavaScriptListener = function() {
   $("form#new_service").submit(Service.submitCreateForm);
-
   $("#js-all-services").on("click", Service.listClick);
-
   $("#js-next-service").on("click", Service.nextService);
+}
+
+Service.ready = function() {
+  Service.addJavaScriptListener();
+}
+
+$(function() {
+  Service.ready();
 });
