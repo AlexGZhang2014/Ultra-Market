@@ -1,10 +1,10 @@
 <div class="logged_in">
-  <h1>Name: <%= @service.name %></h1>
+  <h1 id="serviceName">Name: <%= @service.name %></h1>
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
-  <p>Description: <%= @service.description %></p>
-  <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account) %></p>
+  <p id="serviceDescription">Description: <%= @service.description %></p>
+  <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account), id: "serviceMerchant" %></p>
 
   <% if service_client_view %>
     <% if !@service.bought %>
