@@ -30,7 +30,7 @@ class Merchant {
         $("#all-merchants").append(`<h3>Items:</h3><br>`);
       }
       $("#all-merchants").append(`
-        <h4>${parseInt(i)+1}. <a href="${this.items[i].id}">${this.items[i].name}</a></h4>
+        <h4>${parseInt(i)+1}. <a href="/items/${this.items[i].id}">${this.items[i].name}</a></h4>
         <p>${this.items[i].description}</p>
         `);
     }
@@ -42,7 +42,7 @@ class Merchant {
         $("#all-merchants").append(`<h3>Services:</h3><br>`);
       }
       $("#all-merchants").append(`
-        <h4>${parseInt(s)+1}. <a href="${this.services[s].id}">${this.services[s].name}</a></h4>
+        <h4>${parseInt(s)+1}. <a href="/services/${this.services[s].id}">${this.services[s].name}</a></h4>
         <p>${this.services[s].description}</p>
         `);
     }
