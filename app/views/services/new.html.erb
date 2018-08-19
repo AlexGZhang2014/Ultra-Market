@@ -1,4 +1,12 @@
 <div class="logged_in">
   <h1>Create a new service</h1>
   <%= render partial: "form", locals: {service: @service} %>
+  <br>
+  <div id="newService">
+    <h2 id="serviceName"></h2>
+    <p id="serviceDescription"></p>
+    <p id="serviceMerchant"></p>
+  </div>
+  <br>
+  <p><%= link_to "Click here", merchant_services_path(@service.merchant) %> to view all of your current services.</p>
 </div>
