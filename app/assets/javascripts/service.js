@@ -49,7 +49,7 @@ class Service {
 
   listService() {
     $("#all-services").append(`
-      <h4>${this.name}</h4>
+      <h4><a href="/items/${this.id}">${this.name}</a></h4>
       <p>${this.description}</p>
       `);
   }
