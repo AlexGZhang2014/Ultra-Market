@@ -6,6 +6,8 @@
   <p id="serviceDescription">Description: <%= @service.description %></p>
   <p>Sold by <%= link_to @service.merchant.name, user_account_path(@service.merchant.user_account), id: "serviceMerchant" %></p>
 
+  <button href="#" id="js-next-service" data-id="<%= @service.id %>">Next service</button>
+
   <% if service_client_view %>
     <% if !@service.bought %>
       <p><%= link_to "Click here", service_path(@service), method: "post" %> to buy this service!</p>
