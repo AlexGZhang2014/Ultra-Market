@@ -1,5 +1,8 @@
 <div class="logged_in">
   <h1 id="itemName">Name: <%= @item.name %></h1>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   <p id="itemDescription">Description: <%= @item.description %></p>
   <p>Sold by <%= link_to @item.merchant.name, user_account_path(@item.merchant.user_account), id: "itemMerchant" %></p>
 
