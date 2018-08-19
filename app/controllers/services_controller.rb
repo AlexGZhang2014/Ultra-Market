@@ -11,10 +11,18 @@ class ServicesController < ApplicationController
     else
       if params[:merchant_id]
         @services = Merchant.find(params[:merchant_id]).services.available
+        respond_to do |format|
+          format.html { render :index }
+          format.json { render json: @services }
+        end
       elsif params[:client_id]
         @services = Client.find(params[:client_id]).services
       else
         @services = Service.available
+        respond_to do |format|
+          format.html { render :index }
+          format.json { render json: @services }
+        end
       end
     end
   end
@@ -38,7 +46,10 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(service_params)
     if @service.save
-      redirect_to merchant_service_path(@service.merchant, @service)
+      respond_to do |format|
+        format.html { redirect_to merchant_service_path(@service.merchant, @service) }
+        format.json { render json: @service, status: 201 }
+      end
     else
       render :new
     end
