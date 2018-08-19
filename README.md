@@ -12,7 +12,7 @@ No other setup necessary
 
 ## Usage
 
-Ultra Market is an online shopping website where you can both buy and sell various items and services. To participate in this ultimate free market, you can create an account for free or simply log in using GitHub.
+Ultra Market is an online shopping website where you can both buy and sell various items and services using a fully functional, seamless user interface that incorporates client-side JavaScript. To participate in this ultimate free market, you can create an account for free or simply log in using GitHub.
 
 ## Contributing
 
