@@ -29,8 +29,8 @@ class Item {
   }
 
   static successList(data) {
-    for (const i in data) {
-      let item = new Item(data[i]);
+    for (const itemData of data) {
+      let item = new Item(itemData);
       item.listItem();
     }
   }
@@ -50,6 +50,7 @@ class Item {
     $("#all-items").append(`
       <h4><a href="/items/${this.id}">${this.name}</a></h4>
       <p>${this.description}</p>
+      <p>Sold by ${this.merchant.name}</p>
       `);
   }
 
