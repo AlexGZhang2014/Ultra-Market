@@ -30,8 +30,8 @@ class Service {
   }
 
   static successList(data) {
-    for (const i in data) {
-      let service = new Service(data[i]);
+    for (const serviceData of data) {
+      let service = new Service(serviceData);
       service.listService();
     }
   }
@@ -51,6 +51,7 @@ class Service {
     $("#all-services").append(`
       <h4><a href="/services/${this.id}">${this.name}</a></h4>
       <p>${this.description}</p>
+      <p>Sold by ${this.merchant.name}</p>
       `);
   }
 
