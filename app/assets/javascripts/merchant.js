@@ -12,8 +12,8 @@ class Merchant {
   }
 
   static successList(data) {
-    for (const m in data) {
-      let merchant = new Merchant(data[m]);
+    for (const merchantData of data) {
+      let merchant = new Merchant(merchantData);
       merchant.listMerchant();
       merchant.listItems();
       merchant.listServices();
