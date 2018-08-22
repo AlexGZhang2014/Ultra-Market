@@ -35,6 +35,27 @@ class Item {
     }
   }
 
+  // static successList(data) {
+  //   let alphaArray = [];
+  //   for (const itemData of data) {
+  //     let item = new Item(itemData);
+  //     alphaArray.push(item);
+  //   }
+  //   alphaArray.sort(function(a, b) {
+  //     let nameA = a.name.toUpperCase();
+  //     let nameB = b.name.toUpperCase();
+  //     if (nameA < nameB) {
+  //       return -1;
+  //     }
+  //     if (nameA > nameB) {
+  //       return 1;
+  //     }
+  //   })
+  //   alphaArray.forEach(function(item) {
+  //     item.listItem();
+  //   })
+  // }
+
   static successNextItem(data) {
     let item = new Item(data);
     return item.displayNextItemData();
