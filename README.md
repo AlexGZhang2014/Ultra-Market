@@ -2,6 +2,8 @@
 
 ## Installation
 
+UPDATE: This app has now been deployed with heroku! See "Usage" section for more details.
+
 1. Fork this repository
 2. Clone your fork of this repository (git clone...)
 3. Run "bundle install"
@@ -13,6 +15,8 @@ No other setup necessary
 ## Usage
 
 Ultra Market is an online shopping website where you can both buy and sell various items and services using a fully functional, seamless user interface that incorporates client-side JavaScript. To participate in this ultimate free market, you can create an account for free or simply log in using GitHub.
+
+To try the live demo, go to this link: https://git.heroku.com/ultramarket.git
 
 ## Contributing
 
