@@ -33,6 +33,8 @@ gem 'omniauth-github'
 gem 'dotenv-rails'
 gem "loofah", ">= 2.2.3"
 gem "rack", ">= 2.0.6"
+gem "actionview", ">= 5.2.2.1"
+gem "railties", ">= 5.2.2.1"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
